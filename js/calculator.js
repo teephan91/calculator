@@ -38,9 +38,11 @@ function operate(a, b, operator) {
 
 const numberBtns = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
+let temp = 0;
 
 for (let numberBtn of numberBtns) {
     numberBtn.addEventListener('click', () => {
         display.textContent += numberBtn.textContent;
-    });
+        temp = +display.textContent;
+    });  
 }
