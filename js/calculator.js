@@ -46,3 +46,12 @@ for (let numberBtn of numberBtns) {
         temp = +display.textContent;
     });  
 }
+
+const operators = document.querySelectorAll('.operator');
+let temp2;
+
+for (let operator of operators) {
+    operator.addEventListener('click', () => {
+        temp2 = operator.textContent;
+    });
+}
