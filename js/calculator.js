@@ -35,3 +35,12 @@ function operate(a, b, operator) {
 
     return operator;
 }
+
+const numberBtns = document.querySelectorAll('.number');
+const display = document.querySelector('.display');
+
+for (let numberBtn of numberBtns) {
+    numberBtn.addEventListener('click', () => {
+        display.textContent = numberBtn.textContent;
+    });
+}
