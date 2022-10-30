@@ -41,6 +41,6 @@ const display = document.querySelector('.display');
 
 for (let numberBtn of numberBtns) {
     numberBtn.addEventListener('click', () => {
-        display.textContent = numberBtn.textContent;
+        display.textContent += numberBtn.textContent;
     });
 }
