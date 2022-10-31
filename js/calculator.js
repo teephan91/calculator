@@ -40,11 +40,23 @@ const numberBtns = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
 let temp = 0;
 
-for (let numberBtn of numberBtns) {
-    numberBtn.addEventListener('click', () => {
-        display.textContent += numberBtn.textContent;
-        temp = +display.textContent;
-    });  
+startStoringFirstNumber();
+
+function startStoringFirstNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.addEventListener('click', storeFirstNumber);  
+}
+}
+
+function stopStoringFirstNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.removeEventListener('click', storeFirstNumber);  
+}
+}
+
+function storeFirstNumber() {
+    display.textContent += this.textContent;
+    temp = +display.textContent;
 }
 
 const operators = document.querySelectorAll('.operator');
@@ -53,5 +65,5 @@ let temp2;
 for (let operator of operators) {
     operator.addEventListener('click', () => {
         temp2 = operator.textContent;
-    });
+    });  
 }
