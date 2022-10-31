@@ -91,6 +91,8 @@ function operate(a, b, operator) {
         operator = divide(a, b);
     }
 
+    temp = operator;
+
     return display.textContent = operator;
 }
 
