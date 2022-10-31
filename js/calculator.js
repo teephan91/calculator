@@ -65,5 +65,21 @@ let temp2;
 for (let operator of operators) {
     operator.addEventListener('click', () => {
         temp2 = operator.textContent;
+        stopStoringFirstNumber();
+        startStoringSecondNumber();
     });  
+}
+
+let temp3 = 0;
+
+function startStoringSecondNumber() {
+    display.textContent = "";
+    for (let numberBtn of numberBtns) {
+        numberBtn.addEventListener('click', storeSecondNumber);
+    }
+}
+
+function storeSecondNumber() {
+    display.textContent += this.textContent;
+    temp3 = +display.textContent;
 }
