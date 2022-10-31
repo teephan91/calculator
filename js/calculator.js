@@ -61,6 +61,12 @@ function startStoringSecondNumber() {
     }
 }
 
+function stopStoringSecondNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.removeEventListener('click', storeSecondNumber);
+    }
+}
+
 function storeSecondNumber() {
     display.textContent += this.textContent;
     temp3 = +display.textContent;
@@ -87,3 +93,14 @@ function operate(a, b, operator) {
 
     return display.textContent = operator;
 }
+
+const clearBtn = document.querySelector('.clear');
+
+clearBtn.addEventListener('click', () => {
+    display.textContent = "";
+    temp = 0;
+    temp2 = "";
+    temp3 = 0;
+    stopStoringSecondNumber();
+    startStoringFirstNumber();
+});
