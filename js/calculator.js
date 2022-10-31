@@ -18,24 +18,6 @@ function divide(a, b) {
     return quotient;
 }
 
-function operate(a, b, operator) {
-    a = prompt('a please: ');
-    let c = prompt('Choose an operator: ');
-    b = prompt('b please: ');
-    
-    if (c === '+') {
-        operator = add(a, b);
-    } else if (c === '-') {
-        operator = subtract(a, b);
-    } else if (c === '*') {
-        operator = multiply(a, b);
-    } else if (c === '/') {
-        operator = divide(a, b);
-    }
-
-    return operator;
-}
-
 const numberBtns = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
 let temp = 0;
@@ -82,4 +64,26 @@ function startStoringSecondNumber() {
 function storeSecondNumber() {
     display.textContent += this.textContent;
     temp3 = +display.textContent;
+}
+
+const solutionBtn = document.querySelector('.solution');
+
+solutionBtn.addEventListener('click', operate);
+
+function operate(a, b, operator) {
+    a = temp;
+    c = temp2;
+    b = temp3;
+    
+    if (c === '+') {
+        operator = add(a, b);
+    } else if (c === '-') {
+        operator = subtract(a, b);
+    } else if (c === 'x') {
+        operator = multiply(a, b);
+    } else if (c === '/') {
+        operator = divide(a, b);
+    }
+
+    return display.textContent = operator;
 }
