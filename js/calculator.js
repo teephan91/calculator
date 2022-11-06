@@ -20,7 +20,7 @@ function divide(a, b) {
 
 const numberBtns = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
-let temp = 0;
+let firstNumber = 0;
 // FIRST NUMBER
 startStoringFirstNumber();
 
@@ -38,11 +38,11 @@ function stopStoringFirstNumber() {
 
 function storeFirstNumber() {
     display.textContent += this.textContent;
-    temp = +display.textContent;
+    firstNumber = +display.textContent;
 }
 
 const operators = document.querySelectorAll('.operator');
-let temp2;
+let inputOperator;
 // 1st OPERATOR
 startStoring1stOperator();
 
@@ -59,12 +59,12 @@ function stopStoring1stOperator() {
 }
 
 function store1stOperator() {
-    temp2 = this.textContent;
+    inputOperator = this.textContent;
     stopStoringFirstNumber();
     start1stDigitSecondNumber();
 }
 
-let temp3 = 0;
+let secondNumber = 0;
 // 1st DIGIT SECOND NUMBER
 function start1stDigitSecondNumber() {
     for (let numberBtn of numberBtns) {
@@ -81,7 +81,7 @@ function stop1stDigitSecondNumber() {
 function store1stDigitSecondNumber() {
     display.textContent = "";
     display.textContent += this.textContent;
-    temp3 = +display.textContent;
+    secondNumber = +display.textContent;
     stop1stDigitSecondNumber();
     startStoringSecondNumber();
     stopStoring1stOperator();
@@ -103,7 +103,7 @@ function stopStoringSecondNumber() {
 
 function storeSecondNumber() {
     display.textContent += this.textContent;
-    temp3 = +display.textContent;
+    secondNumber = +display.textContent;
     stopStoring1stOperator();
     startStoring2ndOperator();
 }
@@ -123,7 +123,7 @@ function stopStoring2ndOperator() {
 
 function store2ndOperator() {
     operate();
-    temp2 = this.textContent;
+    inputOperator = this.textContent;
     stopStoringSecondNumber();
     start1stDigitSecondNumber();
 }
@@ -137,10 +137,10 @@ solutionBtn.addEventListener('click', () => {
 });
 
 function operate(a, b, operator) {
-    a = temp;
-    c = temp2;
-    b = temp3;
-    
+    a = firstNumber;
+    b = secondNumber;
+    c = inputOperator;
+     
     if (c === '+') {
         operator = add(a, b);
     } else if (c === '-') {
@@ -151,7 +151,7 @@ function operate(a, b, operator) {
         operator = divide(a, b);
     }
 
-    temp = operator;
+    firstNumber = operator;
 
     return display.textContent = operator;
 }
@@ -160,9 +160,9 @@ const clearBtn = document.querySelector('.clear');
 
 clearBtn.addEventListener('click', () => {
     display.textContent = "";
-    temp = 0;
-    temp2 = "";
-    temp3 = 0;
+    firstNumber = 0;
+    inputOperator = "";
+    secondNumber = 0;
     stopStoringSecondNumber();
     startStoringFirstNumber();
 });
