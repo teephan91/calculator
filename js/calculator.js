@@ -163,6 +163,9 @@ clearBtn.addEventListener('click', () => {
     firstNumber = 0;
     inputOperator = "";
     secondNumber = 0;
+    stop1stDigitSecondNumber();
     stopStoringSecondNumber();
+    stopStoring2ndOperator();
     startStoringFirstNumber();
+    startStoring1stOperator();
 });
