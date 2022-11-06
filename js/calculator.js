@@ -21,7 +21,7 @@ function divide(a, b) {
 const numberBtns = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
 let temp = 0;
-
+// FIRST NUMBER
 startStoringFirstNumber();
 
 function startStoringFirstNumber() {
@@ -43,19 +43,53 @@ function storeFirstNumber() {
 
 const operators = document.querySelectorAll('.operator');
 let temp2;
+// 1st OPERATOR
+startStoring1stOperator();
 
-for (let operator of operators) {
-    operator.addEventListener('click', () => {
-        temp2 = operator.textContent;
-        stopStoringFirstNumber();
-        startStoringSecondNumber();
-    });  
+function startStoring1stOperator() {
+    for (let operator of operators) {
+        operator.addEventListener('click', store1stOperator);
+    }
+}
+
+function stopStoring1stOperator() {
+    for (let operator of operators) {
+        operator.removeEventListener('click', store1stOperator);
+    }
+}
+
+function store1stOperator() {
+    temp2 = this.textContent;
+    stopStoringFirstNumber();
+    start1stDigitSecondNumber();
 }
 
 let temp3 = 0;
+// 1st DIGIT SECOND NUMBER
+function start1stDigitSecondNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.addEventListener('click', store1stDigitSecondNumber);
+    }
+}
 
-function startStoringSecondNumber() {
+function stop1stDigitSecondNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.removeEventListener('click', store1stDigitSecondNumber);
+    }
+}
+
+function store1stDigitSecondNumber() {
     display.textContent = "";
+    display.textContent += this.textContent;
+    temp3 = +display.textContent;
+    stop1stDigitSecondNumber();
+    startStoringSecondNumber();
+    stopStoring1stOperator();
+    startStoring2ndOperator();
+}
+
+// SECOND NUMBER
+function startStoringSecondNumber() {  
     for (let numberBtn of numberBtns) {
         numberBtn.addEventListener('click', storeSecondNumber);
     }
@@ -70,11 +104,37 @@ function stopStoringSecondNumber() {
 function storeSecondNumber() {
     display.textContent += this.textContent;
     temp3 = +display.textContent;
+    stopStoring1stOperator();
+    startStoring2ndOperator();
+}
+
+// 2nd OPERATOR
+function startStoring2ndOperator() {
+    for (let operator of operators) {
+        operator.addEventListener('click', store2ndOperator);
+    }
+}
+
+function stopStoring2ndOperator() {
+    for (let operator of operators) {
+        operator.removeEventListener('click', store2ndOperator);
+    }
+}
+
+function store2ndOperator() {
+    operate();
+    temp2 = this.textContent;
+    stopStoringSecondNumber();
+    start1stDigitSecondNumber();
 }
 
 const solutionBtn = document.querySelector('.solution');
 
-solutionBtn.addEventListener('click', operate);
+solutionBtn.addEventListener('click', () => {
+    operate();
+    stopStoring2ndOperator();
+    startStoring1stOperator();
+});
 
 function operate(a, b, operator) {
     a = temp;
