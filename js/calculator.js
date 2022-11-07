@@ -160,6 +160,14 @@ function operate(a, b, operator) {
     return display.textContent = roundAnswer(operator);
 }
 
+function roundAnswer(answer) {
+    if (Number.isInteger(answer)) {
+        return answer;
+    } else {
+        return parseFloat(answer.toFixed(5));
+    }
+}
+
 const clearBtn = document.querySelector('.clear');
 
 clearBtn.addEventListener('click', () => {
@@ -173,11 +181,3 @@ clearBtn.addEventListener('click', () => {
     startStoringFirstNumber();
     startStoring1stOperator();
 });
-
-function roundAnswer(answer) {
-    if (Number.isInteger(answer)) {
-        return answer;
-    } else {
-        return parseFloat(answer.toFixed(5));
-    }
-}
