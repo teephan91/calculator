@@ -122,10 +122,15 @@ function stopStoring2ndOperator() {
 }
 
 function store2ndOperator() {
-    operate();
-    inputOperator = this.textContent;
-    stopStoringSecondNumber();
-    start1stDigitSecondNumber();
+    let result2ndOperator = operate();
+    if (result2ndOperator === undefined) {
+        stopStoringSecondNumber();
+        start1stDigitSecondNumber();
+    } else {
+        inputOperator = this.textContent;
+        stopStoringSecondNumber();
+        start1stDigitSecondNumber();
+    }
 }
 
 const solutionBtn = document.querySelector('.solution');
@@ -134,9 +139,13 @@ solutionBtn.addEventListener('click', () => {
     if ((secondNumber === undefined) || (inputOperator === undefined)) {
         alert('Missing some inputs. Please enter those before clicking "=" button.');
     } else {
-        operate();
-        stopStoring2ndOperator();
-        startStoring1stOperator();
+        let resultSolutionBtn = operate();
+        if (resultSolutionBtn === undefined) {
+            start1stDigitSecondNumber();
+        } else {
+            stopStoring2ndOperator();
+            startStoring1stOperator();
+        }
     }
 });
 
@@ -152,7 +161,9 @@ function operate(a, b, operator) {
     } else if (c === 'x') {
         operator = multiply(a, b);
     } else if (c === '/') {
-        operator = divide(a, b);
+        if (b === 0) {
+            return alert('Math ERROR! Please enter the number again.');
+        } else operator = divide(a, b);
     }
 
     firstNumber = operator;
