@@ -41,6 +41,42 @@ function storeFirstNumber() {
     firstNumber = +display.textContent;
 }
 
+const decimalBtn = document.querySelector('.decimal-point');
+// decimal point
+startAddDecimalPoint();
+
+function startAddDecimalPoint() {
+    decimalBtn.addEventListener('click', addDecimalPoint);
+}
+
+function stopAddDecimalPoint() {
+    decimalBtn.removeEventListener('click', addDecimalPoint);
+}
+
+function addDecimalPoint() {
+    display.textContent += this.textContent;
+    stopAddDecimalPoint();
+}
+// this is A SPECIAL CASE for when users don't input the integer portion
+// before clicking ".".
+// the integer portion is assumed to be "0".
+function startAddSpecialDecimalPoint() {
+    decimalBtn.addEventListener('click', addSpecialDecimalPoint);
+}
+
+function stopAddSpecialDecimalPoint() {
+    decimalBtn.removeEventListener('click', addSpecialDecimalPoint);
+}
+
+function addSpecialDecimalPoint() {
+    display.textContent = "";
+    display.textContent += this.textContent;
+    stopAddSpecialDecimalPoint();
+    stopAddDecimalPoint();
+    stop1stDigitSecondNumber();
+    startStoringSecondNumber();
+}
+
 const operators = document.querySelectorAll('.operator');
 let inputOperator;
 // 1st OPERATOR
@@ -60,7 +96,9 @@ function stopStoring1stOperator() {
 
 function store1stOperator() {
     inputOperator = this.textContent;
+    stopAddDecimalPoint();
     stopStoringFirstNumber();
+    startAddSpecialDecimalPoint();
     start1stDigitSecondNumber();
 }
 
@@ -84,6 +122,8 @@ function store1stDigitSecondNumber() {
     secondNumber = +display.textContent;
     stop1stDigitSecondNumber();
     startStoringSecondNumber();
+    stopAddSpecialDecimalPoint();
+    startAddDecimalPoint();
     stopStoring1stOperator();
     startStoring2ndOperator();
 }
@@ -126,10 +166,12 @@ function store2ndOperator() {
     if (result2ndOperator === undefined) {
         stopStoringSecondNumber();
         start1stDigitSecondNumber();
+        startAddSpecialDecimalPoint();
     } else {
         inputOperator = this.textContent;
         stopStoringSecondNumber();
         start1stDigitSecondNumber();
+        startAddSpecialDecimalPoint();
     }
 }
 
@@ -142,6 +184,7 @@ solutionBtn.addEventListener('click', () => {
         let resultSolutionBtn = operate();
         if (resultSolutionBtn === undefined) {
             start1stDigitSecondNumber();
+            startAddSpecialDecimalPoint();
         } else {
             stopStoring2ndOperator();
             startStoring1stOperator();
