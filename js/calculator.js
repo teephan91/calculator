@@ -233,5 +233,6 @@ clearBtn.addEventListener('click', () => {
     stopStoringSecondNumber();
     stopStoring2ndOperator();
     startStoringFirstNumber();
+    startAddDecimalPoint();
     startStoring1stOperator();
 });
