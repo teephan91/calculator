@@ -153,7 +153,7 @@ function operate(a, b, operator) {
 
     firstNumber = operator;
 
-    return display.textContent = operator;
+    return display.textContent = roundAnswer(operator);
 }
 
 const clearBtn = document.querySelector('.clear');
@@ -169,3 +169,11 @@ clearBtn.addEventListener('click', () => {
     startStoringFirstNumber();
     startStoring1stOperator();
 });
+
+function roundAnswer(answer) {
+    if (Number.isInteger(answer)) {
+        return answer;
+    } else {
+        return parseFloat(answer.toFixed(5));
+    }
+}
