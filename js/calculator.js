@@ -173,8 +173,8 @@ const clearBtn = document.querySelector('.clear');
 clearBtn.addEventListener('click', () => {
     display.textContent = "";
     firstNumber = 0;
-    inputOperator = "";
-    secondNumber = 0;
+    inputOperator = void 0;
+    secondNumber = void 0;
     stop1stDigitSecondNumber();
     stopStoringSecondNumber();
     stopStoring2ndOperator();
