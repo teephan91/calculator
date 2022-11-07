@@ -64,7 +64,7 @@ function store1stOperator() {
     start1stDigitSecondNumber();
 }
 
-let secondNumber = 0;
+let secondNumber;
 // 1st DIGIT SECOND NUMBER
 function start1stDigitSecondNumber() {
     for (let numberBtn of numberBtns) {
@@ -131,9 +131,13 @@ function store2ndOperator() {
 const solutionBtn = document.querySelector('.solution');
 
 solutionBtn.addEventListener('click', () => {
-    operate();
-    stopStoring2ndOperator();
-    startStoring1stOperator();
+    if ((secondNumber === undefined) || (inputOperator === undefined)) {
+        alert('Missing some inputs. Please enter those before clicking "=" button.');
+    } else {
+        operate();
+        stopStoring2ndOperator();
+        startStoring1stOperator();
+    }
 });
 
 function operate(a, b, operator) {
