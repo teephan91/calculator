@@ -1,3 +1,4 @@
+// 4 basic math operations.
 function add(a, b) {
     let sum = +a + +b;
     return sum;
@@ -16,6 +17,38 @@ function multiply(a, b) {
 function divide(a, b) {
     let quotient = a / b;
     return quotient;
+}
+
+// operate() will call on the 4 basic operations functions.
+function operate(a, b, operator) {
+    a = firstNumber;
+    b = secondNumber;
+    c = inputOperator;
+     
+    if (c === '+') {
+        operator = add(a, b);
+    } else if (c === '-') {
+        operator = subtract(a, b);
+    } else if (c === 'x') {
+        operator = multiply(a, b);
+    } else if (c === '/') {
+        if (b === 0) {
+            return alert('Math ERROR! Please enter the number again.');
+        } else operator = divide(a, b);
+    }
+
+    firstNumber = operator;
+
+    return display.textContent = roundAnswer(operator);
+}
+
+// roundAnswer() will round out the result of operate() to 5 decimal pts.
+function roundAnswer(answer) {
+    if (Number.isInteger(answer)) {
+        return answer;
+    } else {
+        return parseFloat(answer.toFixed(5));
+    }
 }
 
 const numberBtns = document.querySelectorAll('.number');
@@ -57,6 +90,7 @@ function addDecimalPoint() {
     display.textContent += this.textContent;
     stopAddDecimalPoint();
 }
+
 // this is A SPECIAL CASE for when users don't input the integer portion
 // before clicking ".".
 // the integer portion is assumed to be "0".
@@ -176,7 +210,7 @@ function store2ndOperator() {
 }
 
 const solutionBtn = document.querySelector('.solution');
-
+// "=" or SOLUTION button.
 solutionBtn.addEventListener('click', () => {
     if ((secondNumber === undefined) || (inputOperator === undefined)) {
         alert('Missing some inputs. Please enter those before clicking "=" button.');
@@ -192,38 +226,8 @@ solutionBtn.addEventListener('click', () => {
     }
 });
 
-function operate(a, b, operator) {
-    a = firstNumber;
-    b = secondNumber;
-    c = inputOperator;
-     
-    if (c === '+') {
-        operator = add(a, b);
-    } else if (c === '-') {
-        operator = subtract(a, b);
-    } else if (c === 'x') {
-        operator = multiply(a, b);
-    } else if (c === '/') {
-        if (b === 0) {
-            return alert('Math ERROR! Please enter the number again.');
-        } else operator = divide(a, b);
-    }
-
-    firstNumber = operator;
-
-    return display.textContent = roundAnswer(operator);
-}
-
-function roundAnswer(answer) {
-    if (Number.isInteger(answer)) {
-        return answer;
-    } else {
-        return parseFloat(answer.toFixed(5));
-    }
-}
-
 const clearBtn = document.querySelector('.clear');
-
+// "C" or CLEAR button
 clearBtn.addEventListener('click', () => {
     display.textContent = "";
     firstNumber = 0;
