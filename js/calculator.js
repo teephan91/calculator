@@ -54,8 +54,8 @@ function roundAnswer(answer) {
 // updateName() will update firstNumber & secondNumber to ensure
 // they're up to date in case users make mistakes and delete some
 // digits.
-function updateNumber(number) {
-    return number = +display.textContent;
+function updateNumber() {
+    return +display.textContent;
 }
 
 const numberBtns = document.querySelectorAll('.number');
@@ -141,7 +141,7 @@ function store1stOperator() {
     stopStoringFirstNumber();
     startAddSpecialDecimalPoint();
     start1stDigitSecondNumber();
-    firstNumber = updateNumber(firstNumber);
+    firstNumber = updateNumber();
 }
 
 let secondNumber;
@@ -204,7 +204,7 @@ function stopStoring2ndOperator() {
 }
 
 function store2ndOperator() {
-    secondNumber = updateNumber(secondNumber);
+    secondNumber = updateNumber();
     let result2ndOperator = operate();
     if (result2ndOperator === undefined) {
         stopStoringSecondNumber();
@@ -224,7 +224,7 @@ solutionBtn.addEventListener('click', () => {
     if ((secondNumber === undefined) || (inputOperator === undefined)) {
         alert('Missing some inputs. Please enter those before clicking "=" button.');
     } else {
-        secondNumber = updateNumber(secondNumber);
+        secondNumber = updateNumber();
         let resultSolutionBtn = operate();
         if (resultSolutionBtn === undefined) {
             start1stDigitSecondNumber();
