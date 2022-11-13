@@ -257,3 +257,57 @@ deleteBtn.addEventListener('click', () => {
     display.textContent = display.textContent.slice(0, -1);
     startAddDecimalPoint();
 });
+
+document.addEventListener('keydown', handleKeyBoardEvent);
+// Keyboard support
+function handleKeyBoardEvent(keyboardEvent) {
+    switch (keyboardEvent.key) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            triggerClickEvent(numberBtns, keyboardEvent.key);
+            break;
+        case "+":
+        case "-":
+        case "/":
+            triggerClickEvent(operators, keyboardEvent.key);
+            break;
+        case "*":
+            operators.forEach((operator) => {
+                if (operator.textContent === "x") {
+                    operator.click();
+                }
+            });
+            break;
+        case ".":
+            decimalBtn.click();
+            break;
+        case "Delete":
+        case "Backspace":
+            deleteBtn.click();
+            break;
+        case "=":
+        case "Enter":
+            solutionBtn.click();
+            break;
+        case "c":
+            clearBtn.click();
+    }
+}
+
+// triggerClickEvent() will trigger the 'click' event listener on the
+// HTML buttons when users press on the equivalent keys on the keyboard.
+function triggerClickEvent(elements, keyboard) {
+    elements.forEach((element) => {
+        if (element.textContent === keyboard) {
+            element.click();
+        }
+    });
+}
