@@ -16,26 +16,27 @@ function divide(a, b) {
 }
 
 // operate() will call on the 4 basic operations functions.
-function operate(a, b, operator) {
+function operate(a, b, c) {
+    let result;
     a = firstNumber;
     b = secondNumber;
     c = inputOperator;
-     
+
     if (c === '+') {
-        operator = add(a, b);
+        result = add(a, b);
     } else if (c === '-') {
-        operator = subtract(a, b);
+        result = subtract(a, b);
     } else if (c === 'x') {
-        operator = multiply(a, b);
+        result = multiply(a, b);
     } else if (c === '/') {
         if (b === 0) {
             return alert('Math ERROR! Please enter the number again.');
-        } else operator = divide(a, b);
+        } else result = divide(a, b);
     }
 
-    firstNumber = operator;
+    firstNumber = result;
 
-    return display.textContent = roundAnswer(operator);
+    return display.textContent = roundAnswer(result);
 }
 
 // roundAnswer() will round out the result of operate() to 5 decimal pts.
