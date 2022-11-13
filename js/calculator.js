@@ -75,7 +75,6 @@ function stopStoringFirstNumber() {
 
 function storeFirstNumber() {
     display.textContent += this.textContent;
-    firstNumber = +display.textContent;
 }
 
 const decimalBtn = document.querySelector('.decimal-point');
@@ -158,7 +157,7 @@ function stop1stDigitSecondNumber() {
 function store1stDigitSecondNumber() {
     display.textContent = "";
     display.textContent += this.textContent;
-    secondNumber = +display.textContent;
+    secondNumber = updateNumber();
     stop1stDigitSecondNumber();
     startStoringSecondNumber();
     stopAddSpecialDecimalPoint();
@@ -182,7 +181,7 @@ function stopStoringSecondNumber() {
 
 function storeSecondNumber() {
     display.textContent += this.textContent;
-    secondNumber = +display.textContent;
+    secondNumber = updateNumber();
     stopStoring1stOperator();
     startStoring2ndOperator();
 }
