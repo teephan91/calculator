@@ -1,22 +1,18 @@
 // 4 basic math operations.
 function add(a, b) {
-    let sum = +a + +b;
-    return sum;
+    return +a + +b;
 }
 
 function subtract(a, b) {
-    let difference = a - b;
-    return difference;
+    return a - b;
 }
 
 function multiply(a, b) {
-    let product = a * b;
-    return product;
+    return a * b;
 }
 
 function divide(a, b) {
-    let quotient = a / b;
-    return quotient;
+    return a / b;
 }
 
 // operate() will call on the 4 basic operations functions.
