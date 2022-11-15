@@ -71,6 +71,12 @@ button {
     transform: translateY(5px);
 }
 
+.number:active {
+    background-color: cyan;
+    box-shadow: none;
+    transform: translateY(10px);
+}
+
 .operator {
     background-color: crimson;
     border: none;
@@ -81,6 +87,12 @@ button {
     background-color: salmon;
     box-shadow: 0 5px maroon;
     transform: translateY(5px);
+}
+
+.operator:active {
+    background-color: salmon;
+    box-shadow: none;
+    transform: translateY(10px);
 }
 
 .decimal-point,
@@ -97,6 +109,13 @@ button {
     transform: translateY(5px);
 }
 
+.decimal-point:active,
+.clear:active {
+    background-color: azure;
+    box-shadow: none;
+    transform: translateY(10px);  
+}
+
 .solution,
 .delete {
     font-size: 35px;
@@ -111,6 +130,13 @@ button {
     background-color: orange;
     box-shadow: 0 5px peru;
     transform: translateY(5px);
+}
+
+.solution:active,
+.delete:active {
+    background-color: orange;
+    box-shadow: none;
+    transform: translateY(10px);
 }
 
 footer {
