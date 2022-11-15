@@ -251,7 +251,9 @@ const deleteBtn = document.querySelector('.delete');
 // "Del" or DELETE button
 deleteBtn.addEventListener('click', () => {
     display.textContent = display.textContent.slice(0, -1);
-    startAddDecimalPoint();
+    if (display.textContent.includes(".")) {
+        stopAddDecimalPoint();
+    } else startAddDecimalPoint();
 });
 
 document.addEventListener('keydown', handleKeyBoardEvent);
