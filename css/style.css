@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eeeeee;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 70px;
+    margin: 0;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 2px slategrey,
+                6px 0 2px slategrey,
+                6px 6px 2px slategrey;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 45px;
+    background-color: lightgrey;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    margin: 10px;
+    width: 340px;
+    height: 100px;
+}
+
+button {
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    border-radius: 10px;
+    margin: 10px 5px;
+    width: 75px;
+    height: 60px;
+}
+
+.number {
+    background-color: turquoise;
+    border: none;
+    box-shadow: 0 10px cadetblue;
+}
+
+.number:hover {
+    background-color: cyan;
+    box-shadow: 0 5px cadetblue;
+    transform: translateY(5px);
+}
+
+.operator {
+    background-color: crimson;
+    border: none;
+    box-shadow: 0 10px maroon;
+}
+
+.operator:hover {
+    background-color: salmon;
+    box-shadow: 0 5px maroon;
+    transform: translateY(5px);
+}
+
+.decimal-point,
+.clear {
+    background-color: lightgrey;
+    border: none;
+    box-shadow: 0 10px grey;
+}
+
+.decimal-point:hover,
+.clear:hover {
+    background-color: azure;
+    box-shadow: 0 5px grey;
+    transform: translateY(5px);
+}
+
+.solution,
+.delete {
+    font-size: 35px;
+    background-color: darkorange;
+    width: 165px;
+    border: none;
+    box-shadow: 0 10px peru;
+}
+
+.solution:hover,
+.delete:hover {
+    background-color: orange;
+    box-shadow: 0 5px peru;
+    transform: translateY(5px);
+}
+
+footer {
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    padding: 20px 0;
+    color: #6b6b6b;
+}
