@@ -27,10 +27,9 @@ h1 {
     align-items: center;
     background-color: black;
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 6px 2px slategrey,
-                6px 0 2px slategrey,
-                6px 6px 2px slategrey;
+    border-radius: 10px;
+    border-top: 12px solid slategrey;
+    border-bottom: 12px solid slategrey;
 }
 
 .display {
