@@ -36,7 +36,7 @@ function operate(a, b, c) {
 
     firstNumber = result;
 
-    return display.textContent = roundAnswer(result);
+    return numbersDisplay.textContent = roundAnswer(result);
 }
 
 // roundAnswer() will round out the result of operate() to 5 decimal pts.
@@ -52,11 +52,11 @@ function roundAnswer(answer) {
 // they're up to date in case users make mistakes and delete some
 // digits.
 function updateNumber() {
-    return +display.textContent;
+    return +numbersDisplay.textContent;
 }
 
 const numberBtns = document.querySelectorAll('.number');
-const display = document.querySelector('.display');
+const numbersDisplay = document.querySelector('.numbers-display');
 let firstNumber = 0;
 // FIRST NUMBER
 startStoringFirstNumber();
@@ -74,7 +74,7 @@ function stopStoringFirstNumber() {
 }
 
 function storeFirstNumber() {
-    display.textContent += this.textContent;
+    numbersDisplay.textContent += this.textContent;
 }
 
 const decimalBtn = document.querySelector('.decimal-point');
@@ -90,7 +90,7 @@ function stopAddDecimalPoint() {
 }
 
 function addDecimalPoint() {
-    display.textContent += this.textContent;
+    numbersDisplay.textContent += this.textContent;
     stopAddDecimalPoint();
 }
 
@@ -106,8 +106,8 @@ function stopAddSpecialDecimalPoint() {
 }
 
 function addSpecialDecimalPoint() {
-    display.textContent = "";
-    display.textContent += this.textContent;
+    numbersDisplay.textContent = "";
+    numbersDisplay.textContent += this.textContent;
     stopAddSpecialDecimalPoint();
     stopAddDecimalPoint();
     stop1stDigitSecondNumber();
@@ -115,6 +115,7 @@ function addSpecialDecimalPoint() {
 }
 
 const operators = document.querySelectorAll('.operator');
+const operatorsDisplay = document.querySelector('.operators-display');
 let inputOperator;
 // 1st OPERATOR
 startStoring1stOperator();
@@ -132,6 +133,8 @@ function stopStoring1stOperator() {
 }
 
 function store1stOperator() {
+    operatorsDisplay.textContent = "";
+    operatorsDisplay.textContent += this.textContent;
     inputOperator = this.textContent;
     stopAddDecimalPoint();
     stopStoringFirstNumber();
@@ -155,8 +158,8 @@ function stop1stDigitSecondNumber() {
 }
 
 function store1stDigitSecondNumber() {
-    display.textContent = "";
-    display.textContent += this.textContent;
+    numbersDisplay.textContent = "";
+    numbersDisplay.textContent += this.textContent;
     secondNumber = updateNumber();
     stop1stDigitSecondNumber();
     startStoringSecondNumber();
@@ -180,7 +183,7 @@ function stopStoringSecondNumber() {
 }
 
 function storeSecondNumber() {
-    display.textContent += this.textContent;
+    numbersDisplay.textContent += this.textContent;
     secondNumber = updateNumber();
     stopStoring1stOperator();
     startStoring2ndOperator();
@@ -200,6 +203,8 @@ function stopStoring2ndOperator() {
 }
 
 function store2ndOperator() {
+    operatorsDisplay.textContent = "";
+    operatorsDisplay.textContent += this.textContent;
     secondNumber = updateNumber();
     let result2ndOperator = operate();
     if (result2ndOperator === undefined) {
@@ -235,7 +240,8 @@ solutionBtn.addEventListener('click', () => {
 const clearBtn = document.querySelector('.clear');
 // "C" or CLEAR button
 clearBtn.addEventListener('click', () => {
-    display.textContent = "";
+    numbersDisplay.textContent = "";
+    operatorsDisplay.textContent = "";
     firstNumber = 0;
     inputOperator = void 0;
     secondNumber = void 0;
@@ -250,8 +256,8 @@ clearBtn.addEventListener('click', () => {
 const deleteBtn = document.querySelector('.delete');
 // "Del" or DELETE button
 deleteBtn.addEventListener('click', () => {
-    display.textContent = display.textContent.slice(0, -1);
-    if (display.textContent.includes(".")) {
+    numbersDisplay.textContent = numbersDisplay.textContent.slice(0, -1);
+    if (numbersDisplay.textContent.includes(".")) {
         stopAddDecimalPoint();
     } else startAddDecimalPoint();
 });
