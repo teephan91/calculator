@@ -32,20 +32,43 @@ h1 {
     border-bottom: 12px solid slategrey;
 }
 
-.display {
+.top-screen,
+.bottom-screen {
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    background-color: lightgrey;
+    width: 340px;
+}
+
+.top-screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: right;
-    font-family: Lato, sans-serif;
-    font-weight: 700;
-    font-size: 45px;
-    background-color: lightgrey;
-    border: none;
+    font-size: 25px;   
+    border-bottom: 1px dashed black;  
+    height: 50px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.bottom-screen {
+    display: flex;
+    align-items: center;
+    font-size: 35px;
     border-radius: 0 0 10px 10px;
-    margin: 10px;
-    width: 340px;
-    height: 100px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.numbers-display {
+    width: 270px;
+    text-align: right;
+}
+
+.operators-display {
+    width: 70px;
+    text-align: center;
 }
 
 button {
