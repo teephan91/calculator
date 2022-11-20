@@ -289,7 +289,7 @@ solutionBtn.addEventListener('click', () => {
 const clearBtn = document.querySelector('.clear');
 // "C" or CLEAR button
 clearBtn.addEventListener('click', () => {
-    numbersDisplay.textContent = "";
+    numbersDisplay.textContent = "0";
     operatorsDisplay.textContent = "";
     firstNumber = 0;
     inputOperator = void 0;
