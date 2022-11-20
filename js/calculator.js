@@ -58,9 +58,30 @@ function updateNumber() {
 const numberBtns = document.querySelectorAll('.number');
 const numbersDisplay = document.querySelector('.numbers-display');
 let firstNumber = 0;
-// FIRST NUMBER
-startStoringFirstNumber();
+// 1st DIGIT FIRST NUMBER
+start1stDigitFirstNumber();
 
+function start1stDigitFirstNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.addEventListener('click', store1stDigitFirstNumber);
+    }
+}
+
+function stop1stDigitFirstNumber() {
+    for (let numberBtn of numberBtns) {
+        numberBtn.removeEventListener('click', store1stDigitFirstNumber);
+    }
+}
+
+function store1stDigitFirstNumber() {
+    numbersDisplay.textContent = "";
+    numbersDisplay.textContent += this.textContent;
+    stop1stDigitFirstNumber();
+    startStoringFirstNumber();
+    stopAddSpecialDecimalPoint1stNumber();
+}
+
+// FIRST NUMBER
 function startStoringFirstNumber() {
     for (let numberBtn of numberBtns) {
         numberBtn.addEventListener('click', storeFirstNumber);  
@@ -97,18 +118,40 @@ function addDecimalPoint() {
 // this is A SPECIAL CASE for when users don't input the integer portion
 // before clicking ".".
 // the integer portion is assumed to be "0".
-function startAddSpecialDecimalPoint() {
-    decimalBtn.addEventListener('click', addSpecialDecimalPoint);
+
+// for 1st Number
+startAddSpecialDecimalPoint1stNumber();
+
+function startAddSpecialDecimalPoint1stNumber() {
+    decimalBtn.addEventListener('click', addSpecialDecimalPoint1stNumber);
 }
 
-function stopAddSpecialDecimalPoint() {
-    decimalBtn.removeEventListener('click', addSpecialDecimalPoint);
+function stopAddSpecialDecimalPoint1stNumber() {
+    decimalBtn.removeEventListener('click', addSpecialDecimalPoint1stNumber);
 }
 
-function addSpecialDecimalPoint() {
+function addSpecialDecimalPoint1stNumber() {
     numbersDisplay.textContent = "";
     numbersDisplay.textContent += this.textContent;
-    stopAddSpecialDecimalPoint();
+    stopAddSpecialDecimalPoint1stNumber();
+    stopAddDecimalPoint();
+    stop1stDigitFirstNumber();
+    startStoringFirstNumber();
+}
+
+// for 2nd Number
+function startAddSpecialDecimalPoint2ndNumber() {
+    decimalBtn.addEventListener('click', addSpecialDecimalPoint2ndNumber);
+}
+
+function stopAddSpecialDecimalPoint2ndNumber() {
+    decimalBtn.removeEventListener('click', addSpecialDecimalPoint2ndNumber);
+}
+
+function addSpecialDecimalPoint2ndNumber() {
+    numbersDisplay.textContent = "";
+    numbersDisplay.textContent += this.textContent;
+    stopAddSpecialDecimalPoint2ndNumber();
     stopAddDecimalPoint();
     stop1stDigitSecondNumber();
     startStoringSecondNumber();
@@ -137,8 +180,10 @@ function store1stOperator() {
     operatorsDisplay.textContent += this.textContent;
     inputOperator = this.textContent;
     stopAddDecimalPoint();
+    stop1stDigitFirstNumber();
     stopStoringFirstNumber();
-    startAddSpecialDecimalPoint();
+    stopAddSpecialDecimalPoint1stNumber();
+    startAddSpecialDecimalPoint2ndNumber();
     start1stDigitSecondNumber();
     firstNumber = updateNumber();
 }
@@ -163,7 +208,7 @@ function store1stDigitSecondNumber() {
     secondNumber = updateNumber();
     stop1stDigitSecondNumber();
     startStoringSecondNumber();
-    stopAddSpecialDecimalPoint();
+    stopAddSpecialDecimalPoint2ndNumber();
     startAddDecimalPoint();
     stopStoring1stOperator();
     startStoring2ndOperator();
@@ -210,12 +255,12 @@ function store2ndOperator() {
     if (result2ndOperator === undefined) {
         stopStoringSecondNumber();
         start1stDigitSecondNumber();
-        startAddSpecialDecimalPoint();
+        startAddSpecialDecimalPoint2ndNumber();
     } else {
         inputOperator = this.textContent;
         stopStoringSecondNumber();
         start1stDigitSecondNumber();
-        startAddSpecialDecimalPoint();
+        startAddSpecialDecimalPoint2ndNumber();
     }
 }
 
@@ -229,8 +274,12 @@ solutionBtn.addEventListener('click', () => {
         let resultSolutionBtn = operate();
         if (resultSolutionBtn === undefined) {
             start1stDigitSecondNumber();
-            startAddSpecialDecimalPoint();
+            startAddSpecialDecimalPoint2ndNumber();
         } else {
+            stopStoringSecondNumber();
+            start1stDigitFirstNumber();
+            startAddSpecialDecimalPoint1stNumber();
+            startAddDecimalPoint();
             stopStoring2ndOperator();
             startStoring1stOperator();
         }
@@ -248,7 +297,8 @@ clearBtn.addEventListener('click', () => {
     stop1stDigitSecondNumber();
     stopStoringSecondNumber();
     stopStoring2ndOperator();
-    startStoringFirstNumber();
+    start1stDigitFirstNumber();
+    startAddSpecialDecimalPoint1stNumber();
     startAddDecimalPoint();
     startStoring1stOperator();
 });
