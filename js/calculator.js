@@ -60,6 +60,11 @@ function updateNumber() {
 // Top screen
 const topScreen = document.querySelector('.top-screen');
 
+// tempNumber is used to store firstNumber before it gets updated
+// from operate(). The purpose is to display the previous firstNumber
+// on top screen.
+let tempNumber;
+
 const numberBtns = document.querySelectorAll('.number');
 const numbersDisplay = document.querySelector('.numbers-display');
 let firstNumber = 0;
@@ -195,6 +200,7 @@ function store1stOperator() {
     startAddSpecialDecimalPoint2ndNumber();
     start1stDigitSecondNumber();
     firstNumber = updateNumber();
+    tempNumber = updateNumber();
 }
 
 let secondNumber;
@@ -287,6 +293,9 @@ solutionBtn.addEventListener('click', () => {
             start1stDigitSecondNumber();
             startAddSpecialDecimalPoint2ndNumber();
         } else {
+            operatorsDisplay.textContent = "";
+            topScreen.textContent = `${tempNumber} ${inputOperator} ${secondNumber} =`;
+            topScreen.style.textAlign = 'right';
             stopStoringSecondNumber();
             start1stDigitFirstNumber();
             startAddSpecialDecimalPoint1stNumber();
