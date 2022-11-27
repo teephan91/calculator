@@ -30,7 +30,9 @@ function operate(a, b, c) {
         result = multiply(a, b);
     } else if (c === '/') {
         if (b === 0) {
-            return alert('Math ERROR! Please enter the number again.');
+            topScreen.textContent = "MATH ERROR! Enter again.";
+            topScreen.style.textAlign = 'center';
+            return undefined;
         } else result = divide(a, b);
     }
 
@@ -55,6 +57,9 @@ function updateNumber() {
     return +numbersDisplay.textContent;
 }
 
+// Top screen
+const topScreen = document.querySelector('.top-screen');
+
 const numberBtns = document.querySelectorAll('.number');
 const numbersDisplay = document.querySelector('.numbers-display');
 let firstNumber = 0;
@@ -74,6 +79,7 @@ function stop1stDigitFirstNumber() {
 }
 
 function store1stDigitFirstNumber() {
+    topScreen.textContent = "";
     numbersDisplay.textContent = "";
     numbersDisplay.textContent += this.textContent;
     stop1stDigitFirstNumber();
@@ -131,6 +137,7 @@ function stopAddSpecialDecimalPoint1stNumber() {
 }
 
 function addSpecialDecimalPoint1stNumber() {
+    topScreen.textContent = "";
     numbersDisplay.textContent = "";
     numbersDisplay.textContent += this.textContent;
     stopAddSpecialDecimalPoint1stNumber();
@@ -149,6 +156,7 @@ function stopAddSpecialDecimalPoint2ndNumber() {
 }
 
 function addSpecialDecimalPoint2ndNumber() {
+    topScreen.textContent = "";
     numbersDisplay.textContent = "";
     numbersDisplay.textContent += this.textContent;
     stopAddSpecialDecimalPoint2ndNumber();
@@ -176,6 +184,7 @@ function stopStoring1stOperator() {
 }
 
 function store1stOperator() {
+    topScreen.textContent = "";
     operatorsDisplay.textContent = "";
     operatorsDisplay.textContent += this.textContent;
     inputOperator = this.textContent;
@@ -203,6 +212,7 @@ function stop1stDigitSecondNumber() {
 }
 
 function store1stDigitSecondNumber() {
+    topScreen.textContent = "";
     numbersDisplay.textContent = "";
     numbersDisplay.textContent += this.textContent;
     secondNumber = updateNumber();
@@ -268,7 +278,8 @@ const solutionBtn = document.querySelector('.solution');
 // "=" or SOLUTION button.
 solutionBtn.addEventListener('click', () => {
     if ((secondNumber === undefined) || (inputOperator === undefined)) {
-        alert('Missing some inputs. Please enter those before clicking "=" button.');
+        topScreen.textContent = 'Missing some inputs.';
+        topScreen.style.textAlign = 'center';
     } else {
         secondNumber = updateNumber();
         let resultSolutionBtn = operate();
@@ -289,6 +300,7 @@ solutionBtn.addEventListener('click', () => {
 const clearBtn = document.querySelector('.clear');
 // "C" or CLEAR button
 clearBtn.addEventListener('click', () => {
+    topScreen.textContent = "";
     numbersDisplay.textContent = "0";
     operatorsDisplay.textContent = "";
     firstNumber = 0;
