@@ -43,11 +43,7 @@ function operate(a, b, c) {
 
 // roundAnswer() will round out the result of operate() to 5 decimal pts.
 function roundAnswer(answer) {
-    if (Number.isInteger(answer)) {
-        return answer;
-    } else {
-        return parseFloat(answer.toFixed(5));
-    }
+    return (Number.isInteger(answer)) ? answer : parseFloat(answer.toFixed(5));  
 }
 
 // updateName() will update firstNumber & secondNumber to ensure
@@ -332,9 +328,7 @@ const deleteBtn = document.querySelector('.delete');
 deleteBtn.addEventListener('click', () => {
     numbersDisplay.textContent = numbersDisplay.textContent.slice(0, -1);
     secondNumber = updateNumber();
-    if (numbersDisplay.textContent.includes(".")) {
-        stopAddDecimalPoint();
-    } else startAddDecimalPoint();
+    (numbersDisplay.textContent.includes(".")) ? stopAddDecimalPoint() : startAddDecimalPoint();
 });
 
 document.addEventListener('keydown', handleKeyBoardEvent);
