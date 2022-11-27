@@ -266,7 +266,6 @@ function stopStoring2ndOperator() {
 function store2ndOperator() {
     operatorsDisplay.textContent = "";
     operatorsDisplay.textContent += this.textContent;
-    secondNumber = updateNumber();
     let result2ndOperator = operate();
     if (result2ndOperator === undefined) {
         stopStoringSecondNumber();
@@ -290,7 +289,6 @@ solutionBtn.addEventListener('click', () => {
         topScreen.textContent = 'Missing some inputs.';
         topScreen.style.textAlign = 'center';
     } else {
-        secondNumber = updateNumber();
         let resultSolutionBtn = operate();
         if (resultSolutionBtn === undefined) {
             start1stDigitSecondNumber();
@@ -299,6 +297,7 @@ solutionBtn.addEventListener('click', () => {
             operatorsDisplay.textContent = "";
             topScreen.textContent = `${tempNumber} ${inputOperator} ${secondNumber} =`;
             topScreen.style.textAlign = 'right';
+            tempNumber = firstNumber;
             stopStoringSecondNumber();
             start1stDigitFirstNumber();
             startAddSpecialDecimalPoint1stNumber();
