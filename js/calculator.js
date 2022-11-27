@@ -54,7 +54,7 @@ function roundAnswer(answer) {
 // they're up to date in case users make mistakes and delete some
 // digits.
 function updateNumber() {
-    return +numbersDisplay.textContent;
+    return (numbersDisplay.textContent === ".") ? 0 : +numbersDisplay.textContent;
 }
 
 // Top screen
@@ -164,6 +164,7 @@ function addSpecialDecimalPoint2ndNumber() {
     topScreen.textContent = "";
     numbersDisplay.textContent = "";
     numbersDisplay.textContent += this.textContent;
+    secondNumber = updateNumber();
     stopAddSpecialDecimalPoint2ndNumber();
     stopAddDecimalPoint();
     stop1stDigitSecondNumber();
@@ -330,6 +331,7 @@ const deleteBtn = document.querySelector('.delete');
 // "Del" or DELETE button
 deleteBtn.addEventListener('click', () => {
     numbersDisplay.textContent = numbersDisplay.textContent.slice(0, -1);
+    secondNumber = updateNumber();
     if (numbersDisplay.textContent.includes(".")) {
         stopAddDecimalPoint();
     } else startAddDecimalPoint();
