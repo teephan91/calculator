@@ -273,6 +273,9 @@ function store2ndOperator() {
         start1stDigitSecondNumber();
         startAddSpecialDecimalPoint2ndNumber();
     } else {
+        topScreen.textContent = `${tempNumber} ${inputOperator} ${secondNumber} =`;
+        topScreen.style.textAlign = 'right';
+        tempNumber = firstNumber;
         inputOperator = this.textContent;
         stopStoringSecondNumber();
         start1stDigitSecondNumber();
