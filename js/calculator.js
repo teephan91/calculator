@@ -1,3 +1,59 @@
+const powerBtn = document.querySelector('.power-off');
+const topScreen = document.querySelector('.top-screen');
+const numbersDisplay = document.querySelector('.numbers-display');
+const operatorsDisplay = document.querySelector('.operators-display');
+const numberBtns = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const decimalBtn = document.querySelector('.decimal-point');
+// allBtns except powerBtn
+const allBtns = Array.from(document.querySelectorAll('button'))
+                     .filter(btn => btn.className !== 'power-off');
+
+startTurnOnCalculator();
+
+function startTurnOnCalculator() {
+    powerBtn.addEventListener('click', calculatorOn);
+}
+
+function stopTurnOnCalculator() {
+    powerBtn.removeEventListener('click', calculatorOn);
+}
+
+function calculatorOn() {
+    allBtns.forEach(btn => btn.disabled = false);
+    start1stDigitFirstNumber();
+    startAddDecimalPoint();
+    startAddSpecialDecimalPoint1stNumber();
+    startStoring1stOperator();
+    stopTurnOnCalculator();
+    startTurnOffCalculator();
+    numbersDisplay.textContent = '0';
+    powerBtn.textContent = 'ON';
+    powerBtn.classList.remove('power-off');
+    powerBtn.classList.add('power-on');
+}
+
+function startTurnOffCalculator() {
+    powerBtn.addEventListener('click', calculatorOff);
+}
+
+function stopTurnOffCalculator() {
+    powerBtn.removeEventListener('click', calculatorOff);
+}
+
+function calculatorOff() {
+    allBtns.forEach(btn => btn.disabled = true);
+    stopTurnOffCalculator();
+    startTurnOnCalculator();
+    clearCalculator();
+    topScreen.textContent = '';
+    numbersDisplay.textContent = '';
+    operatorsDisplay.textContent = '';
+    powerBtn.textContent = 'OFF';
+    powerBtn.classList.remove('power-on');
+    powerBtn.classList.add('power-off');
+}
+
 // 4 basic math operations.
 function add(a, b) {
     return +a + +b;
@@ -53,20 +109,13 @@ function updateNumber() {
     return (numbersDisplay.textContent === ".") ? 0 : +numbersDisplay.textContent;
 }
 
-// Top screen
-const topScreen = document.querySelector('.top-screen');
-
 // tempNumber is used to store firstNumber before it gets updated
 // from operate(). The purpose is to display the previous firstNumber
 // on top screen.
 let tempNumber;
 
-const numberBtns = document.querySelectorAll('.number');
-const numbersDisplay = document.querySelector('.numbers-display');
 let firstNumber = 0;
 // 1st DIGIT FIRST NUMBER
-start1stDigitFirstNumber();
-
 function start1stDigitFirstNumber() {
     for (let numberBtn of numberBtns) {
         numberBtn.addEventListener('click', store1stDigitFirstNumber);
@@ -105,10 +154,7 @@ function storeFirstNumber() {
     numbersDisplay.textContent += this.textContent;
 }
 
-const decimalBtn = document.querySelector('.decimal-point');
 // decimal point
-startAddDecimalPoint();
-
 function startAddDecimalPoint() {
     decimalBtn.addEventListener('click', addDecimalPoint);
 }
@@ -127,8 +173,6 @@ function addDecimalPoint() {
 // the integer portion is assumed to be "0".
 
 // for 1st Number
-startAddSpecialDecimalPoint1stNumber();
-
 function startAddSpecialDecimalPoint1stNumber() {
     decimalBtn.addEventListener('click', addSpecialDecimalPoint1stNumber);
 }
@@ -167,12 +211,8 @@ function addSpecialDecimalPoint2ndNumber() {
     startStoringSecondNumber();
 }
 
-const operators = document.querySelectorAll('.operator');
-const operatorsDisplay = document.querySelector('.operators-display');
 let inputOperator;
 // 1st OPERATOR
-startStoring1stOperator();
-
 function startStoring1stOperator() {
     for (let operator of operators) {
         operator.addEventListener('click', store1stOperator);
@@ -307,7 +347,9 @@ solutionBtn.addEventListener('click', () => {
 
 const clearBtn = document.querySelector('.clear');
 // "C" or CLEAR button
-clearBtn.addEventListener('click', () => {
+clearBtn.addEventListener('click', clearCalculator);
+
+function clearCalculator() {
     topScreen.textContent = "";
     numbersDisplay.textContent = "0";
     operatorsDisplay.textContent = "";
@@ -321,7 +363,7 @@ clearBtn.addEventListener('click', () => {
     startAddSpecialDecimalPoint1stNumber();
     startAddDecimalPoint();
     startStoring1stOperator();
-});
+}
 
 const deleteBtn = document.querySelector('.delete');
 // "Del" or DELETE button

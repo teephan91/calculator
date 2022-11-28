@@ -32,6 +32,63 @@ h1 {
     border-bottom: 12px solid slategrey;
 }
 
+.label-power {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 340px;
+    margin-bottom: 15px;
+    font-family: Lato, sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
+.power-off {
+    font-size: 15px;
+    margin: 0;
+    width: 50px;
+    height: 25px;
+    background-color: tomato;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px lightgrey;
+}
+
+.power-off:hover {
+    background-color: firebrick;
+    box-shadow: 0 3px lightgrey;
+    transform: translateY(2px);
+}
+
+.power-off:active {
+    background-color: firebrick;
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.power-on {
+    font-size: 15px;
+    margin: 0;
+    width: 50px;
+    height: 25px;
+    background-color: chartreuse;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px lightgrey;  
+}
+
+.power-on:hover {
+    background-color: forestgreen;
+    box-shadow: 0 3px lightgrey;
+    transform: translateY(2px);
+}
+
+.power-on:active {
+    background-color: forestgreen;
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
 .top-screen,
 .bottom-screen {
     font-family: Lato, sans-serif;
@@ -80,7 +137,9 @@ button {
     height: 60px;
 }
 
-.number {
+.number,
+.number:disabled {
+    color: black;
     background-color: turquoise;
     border: none;
     box-shadow: 0 10px cadetblue;
@@ -98,7 +157,9 @@ button {
     transform: translateY(10px);
 }
 
-.operator {
+.operator,
+.operator:disabled {
+    color: black;
     background-color: crimson;
     border: none;
     box-shadow: 0 10px maroon;
@@ -117,7 +178,10 @@ button {
 }
 
 .decimal-point,
-.clear {
+.clear,
+.decimal-point:disabled,
+.clear:disabled {
+    color: black;
     background-color: lightgrey;
     border: none;
     box-shadow: 0 10px grey;
@@ -138,7 +202,10 @@ button {
 }
 
 .solution,
-.delete {
+.delete,
+.solution:disabled,
+.delete:disabled {
+    color: black;
     font-size: 35px;
     background-color: darkorange;
     width: 165px;
