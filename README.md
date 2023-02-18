@@ -7,9 +7,9 @@ This is an on-screen calculator, with four basic math operators plus a decimal p
 **[CLICK HERE TO VIEW THE PROJECT](https://teephan91.github.io/calculator/)**
 
 ## Technology Used
-- [x] ![HTML](https://img.shields.io/badge/-HTML-000?style=flat&logo=html5&logoColor=394148&color=fac60c) ► **10.0%** 
-- [x] ![CSS](https://img.shields.io/badge/-CSS-000?style=flat&logo=css3&logoColor=394148&color=fac60c) ► **23.1%** 
-- [x] ![JavaScript](https://img.shields.io/badge/-JavaScript-000?style=flat&logoColor=394148&logo=javascript&color=fac60c) ► **66.9%**
+- [x] ![HTML](https://img.shields.io/badge/-HTML-000?style=flat&logo=html5&logoColor=394148&color=fac60c) ► **11.1%** 
+- [x] ![CSS](https://img.shields.io/badge/-CSS-000?style=flat&logo=css3&logoColor=394148&color=fac60c) ► **23.3%** 
+- [x] ![JavaScript](https://img.shields.io/badge/-JavaScript-000?style=flat&logoColor=394148&logo=javascript&color=fac60c) ► **65.6%**
 
 ## What I Did
 This one was a cornerstone project because it was the final project of [the Odin's Project Foundations course](https://www.theodinproject.com/paths/foundations/courses/foundations). It meant I had to utilize all the web development knowledge that I'd learned over the last four months to get it done.
